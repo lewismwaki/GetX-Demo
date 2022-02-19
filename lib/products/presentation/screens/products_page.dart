@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
@@ -15,7 +17,20 @@ class ProductsPage extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.bottomSheet(
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5, tileMode: TileMode.mirror),
+                  child: Container(
+                    height: Get.height * 0.8,
+                    color: Colors.red,
+                    child: Text("test"),
+                  ),
+                ),
+                barrierColor: Colors.orange.withOpacity(0.2),
+                enableDrag: true,
+              );
+            },
             icon: Icon(Icons.edit),
           ),
         ],
